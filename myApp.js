@@ -29,7 +29,8 @@ app.get(
 app.get("/:word/echo", (req, res) => {
   res.json({ echo: req.params.word });
 });
-app.get("/name", (req, res) => {
+const handler = (req, res) => {
   res.json({ name: `${req.query.firstname} ${req.query.lastname}` });
-});
+};
+app.route("/name").get(handler).post(handler);
 module.exports = app;
